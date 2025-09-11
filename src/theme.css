@@ -74,6 +74,9 @@ html[data-theme="dark"] {
 		--color-muted-foreground: #6E6E78;
 		--color-accent: #00FFC4;
 		--color-accent-foreground: #010409;
+		--color-accent-purple: #6E3EFF;
+		--color-accent-aqua: #00FFC4;
+		--color-accent-blue: #00A8E8;
 		--color-destructive: #ff4444;
 		--color-border: color-mix(in oklch, #3A3F4B, transparent 50%);
 		--color-input: #262A33;
