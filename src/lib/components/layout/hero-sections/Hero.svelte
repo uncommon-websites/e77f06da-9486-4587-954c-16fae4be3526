@@ -64,21 +64,28 @@
 	}: Props = $props();
 </script>
 
-<div class="bg-background" {...rest}>
+<div class={[
+	"bg-background relative overflow-hidden",
+	"before:absolute before:inset-0 before:bg-gradient-to-br before:from-transparent before:via-transparent before:to-primary/5"
+]} {...rest}>
 	<header
 		class={[
-			"section-px container mx-auto grid items-end gap-16 gap-y-9 py-12 pt-24 text-balance",
+			"section-px container mx-auto grid items-end gap-16 gap-y-12 py-16 pt-32 text-balance relative z-10",
 			centered ? "place-items-center text-center" : " xl:grid-cols-[1fr_auto]"
 		]}
 		data-enter-container
 	>
-		<div class="grid gap-6" class:max-w-prose={centered}>
-			<h1 class="text-display w-full" data-enter>
-				<span class="block"><AnimateText text={title} /></span>
+		<div class="grid gap-8" class:max-w-prose={centered}>
+			<div class="space-y-4">
+				<h1 class="text-display w-full font-medium tracking-tight" data-enter>
+					<span class="block text-foreground"><AnimateText text={title} /></span>
+				</h1>
 				{#if !centered}
-					<span class="text-emphasis-dim block"><AnimateText text={subtitle} /></span>
+					<p class="text-headline text-muted-foreground max-w-2xl leading-relaxed" data-enter>
+						{subtitle}
+					</p>
 				{/if}
-			</h1>
+			</div>
 
 			{#if centered}
 				<p
@@ -94,19 +101,25 @@
 		</div>
 
 		{#if callsToAction.length > 0}
-			<div class="flex gap-4" data-enter>
+			<div class="flex gap-4 pt-4" data-enter>
 				{#each callsToAction as cta, index}
 					<Button
 						href={cta.href}
 						size="lg"
 						variant={index % 2 === 0 ? "primary" : "secondary"}
-						class="max-lg:hidden">{cta.label}</Button
+						class={[
+							"max-lg:hidden transition-all duration-300",
+							index % 2 === 0 ? "bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/20" : "border-border hover:bg-accent/50"
+						]}>{cta.label}</Button
 					>
 					<Button
 						href={cta.href}
 						size="md"
 						variant={index % 2 === 0 ? "primary" : "secondary"}
-						class="lg:hidden">{cta.label}</Button
+						class={[
+							"lg:hidden transition-all duration-300",
+							index % 2 === 0 ? "bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/20" : "border-border hover:bg-accent/50"
+						]}>{cta.label}</Button
 					>
 				{/each}
 			</div>
@@ -114,13 +127,16 @@
 	</header>
 
 	{#if imageSrc}
-		<div class="col-span-full aspect-video" data-enter>
-			<img
-				src={imageSrc}
-				alt="Customer"
-				class="size-full object-cover"
-				onerror={handleImageError}
-			/>
+		<div class="col-span-full aspect-video relative z-10" data-enter>
+			<div class="relative overflow-hidden rounded-lg border border-border/50">
+				<img
+					src={imageSrc}
+					alt="Medical Affairs professionals achieving success"
+					class="size-full object-cover transition-transform duration-500 hover:scale-105"
+					onerror={handleImageError}
+				/>
+				<div class="absolute inset-0 bg-gradient-to-t from-background/20 via-transparent to-transparent"></div>
+			</div>
 		</div>
 	{/if}
 </div>

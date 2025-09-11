@@ -10,10 +10,19 @@
 </script>
 
 <Hero
-	title="Elevate your business with thoughtful design"
-	subtitle="Solutions that enhance user experience, and improve visual communication."
-	imageSrc="https://www.unc.mn/image-placeholder.svg"
-	generating
+	title="Launch excellence starts with coordination"
+	subtitle="Align your team in weeks, not quarters. Transform scattered data into clear, reliable workflows with AI-native knowledge coordination that keeps scientists in control."
+	imageSrc="/generated/image-a-medical-affairs-professional-is-in-a-m.webp"
+	callsToAction={[
+		{
+			href: "/demo",
+			label: "See demo"
+		},
+		{
+			href: "/contact",
+			label: "Get started"
+		}
+	]}
 />
 <LogoScroller label="" generating />
 
